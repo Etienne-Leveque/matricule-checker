@@ -1,5 +1,13 @@
 [[package]]
 category = "dev"
+description = "Python graph (network) package"
+name = "altgraph"
+optional = false
+python-versions = "*"
+version = "0.16.1"
+
+[[package]]
+category = "dev"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
 optional = false
@@ -176,6 +184,18 @@ version = "3.9.4"
 
 [[package]]
 category = "dev"
+description = "PyInstaller bundles a Python application and all its dependencies into a single package."
+name = "pyinstaller"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "3.5"
+
+[package.dependencies]
+altgraph = "*"
+setuptools = "*"
+
+[[package]]
+category = "dev"
 description = "python code static checker"
 name = "pylint"
 optional = false
@@ -245,10 +265,14 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "8c62d5cfd62b14cb051cb38a31fcaeb8e62be5f5808ced9c1958faa0af2e7553"
+content-hash = "ee3965bb07d2e07312be5c47d18f289bb7ca989ec4c0213c1db7863203adfbb6"
 python-versions = "^3.7"
 
 [metadata.files]
+altgraph = [
+    {file = "altgraph-0.16.1-py2.py3-none-any.whl", hash = "sha256:d6814989f242b2b43025cba7161fc1b8fb487a62cd49c49245d6fd01c18ac997"},
+    {file = "altgraph-0.16.1.tar.gz", hash = "sha256:ddf5320017147ba7b810198e0b6619bd7b5563aa034da388cea8546b877f9b0c"},
+]
 appdirs = [
     {file = "appdirs-1.4.3-py2.py3-none-any.whl", hash = "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"},
     {file = "appdirs-1.4.3.tar.gz", hash = "sha256:9e5896d1372858f8dd3344faf4e5014d21849c756c8d5701f78f8a103b372d92"},
@@ -369,6 +393,9 @@ pycryptodome = [
     {file = "pycryptodome-3.9.4-cp38-cp38-win32.whl", hash = "sha256:a8ca2450394d3699c9f15ef25e8de9a24b401933716a1e39d37fa01f5fe3c58b"},
     {file = "pycryptodome-3.9.4-cp38-cp38-win_amd64.whl", hash = "sha256:c53348358408d94869059e16fba5ff3bef8c52c25b18421472aba272b9bb450f"},
     {file = "pycryptodome-3.9.4.tar.gz", hash = "sha256:a168e73879619b467072509a223282a02c8047d932a48b74fbd498f27224aa04"},
+]
+pyinstaller = [
+    {file = "PyInstaller-3.5.tar.gz", hash = "sha256:ee7504022d1332a3324250faf2135ea56ac71fdb6309cff8cd235de26b1d0a96"},
 ]
 pylint = [
     {file = "pylint-2.4.4-py3-none-any.whl", hash = "sha256:886e6afc935ea2590b462664b161ca9a5e40168ea99e5300935f6591ad467df4"},
