@@ -26,7 +26,7 @@ for pdf_file_path in all_pdf_file_paths:
 
     if not matricule_match:
         report.append(f"{pdf_filename};;;non")
-        break
+        continue
 
     filename_matricule = matricule_match["filename_matricule"]
 

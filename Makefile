@@ -6,5 +6,6 @@ build-app:
 	pyinstaller \
 		--clean \
 		--onefile \
+		--icon icons/icons.svg \
 		matricule_checker.py
 	cp dist/matricule_checker matricule_checker
