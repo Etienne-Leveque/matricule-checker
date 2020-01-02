@@ -11,3 +11,4 @@ build/
 *.spec
 matricule_checker
 *.zip
+*.egg-info
