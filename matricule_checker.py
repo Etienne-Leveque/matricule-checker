@@ -19,6 +19,8 @@ all_pdf_file_paths = glob(os.path.join(application_path, "*.pdf"))
 if not all_pdf_file_paths:
     print("No pdf files to check.")
 
+print(f"Will check {len(all_pdf_file_paths)} pdf files: \n")
+
 for pdf_file_path in all_pdf_file_paths:
     pdf_filename = os.path.basename(pdf_file_path)
     print(f"Checking {pdf_filename}...")
