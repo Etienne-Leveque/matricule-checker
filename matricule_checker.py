@@ -22,7 +22,7 @@ if not all_pdf_file_paths:
 for pdf_file_path in all_pdf_file_paths:
     pdf_filename = os.path.basename(pdf_file_path)
     print(f"Checking {pdf_filename}...")
-    matricule_match = re.match(r"0(?P<filename_matricule>\d{6})", pdf_filename)
+    matricule_match = re.match(r"(?P<filename_matricule>\d{7})", pdf_filename)
 
     if not matricule_match:
         report.append(f"{pdf_filename};;;non")
@@ -32,13 +32,18 @@ for pdf_file_path in all_pdf_file_paths:
 
     text = extract_text(pdf_file_path)
 
-    m = re.search(r"Matricule : (?P<pdf_matricule>\d{6}\w{1})", text)
+    if filename_matricule.startswith("0"):
+        pattern = r"Matricule : (?P<pdf_matricule>\d{6}\w{1})"
+    else:
+        pattern = r"Matricule : (?P<pdf_matricule>\d{7})"
+
+    m = re.search(pattern, text)
 
     if m is not None:
         pdf_matricule = m["pdf_matricule"]
 
         if pdf_filename.startswith("0"):
-            condition = pdf_matricule[:-1] == filename_matricule
+            condition = pdf_matricule[:-1] == filename_matricule[1:]
         else:
             condition = pdf_matricule == filename_matricule
 
@@ -47,12 +52,8 @@ for pdf_file_path in all_pdf_file_paths:
         else:
             report.append(f"{pdf_filename};{filename_matricule};{pdf_matricule};non")
     else:
-        break
+        report.append(f"{pdf_filename};{filename_matricule};;non")
 
-if os.path.exists(REPORT_PATH):
-    lecture_mode = "w"
-else:
-    lecture_mode = "x"
 
-with open(REPORT_PATH, lecture_mode) as file_:
+with open(REPORT_PATH, "w+") as file_:
     file_.write("\n".join(report))
